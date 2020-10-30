@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Xamarin.Android.VerticalViewPager</id>
-        <version>1.0.0</version>
+        <version>1.1.2</version>
         <title>VerticalViewPager for Xamarin Android</title>
         <authors>Alex Rainman</authors>
         <owners>Alex Rainman</owners>
@@ -12,11 +12,17 @@
         <description>Com.Android.DeskClock VerticalViewPager for Xamarin Android.</description>
         <summary>Com.Android.DeskClock VerticalViewPager for Xamarin Android.</summary>
         <releaseNotes>
+1.1.2
+Changing isSwipingEnabled property access modifier
+1.1.1
+Fixing AndroiX dependencies
+1.1.0
+Upgrading to Android X
         </releaseNotes>
         <tags>vertical viewpager android xamarin forms monodroid</tags>
         <dependencies>
 			 <group targetFramework="MonoAndroid10">
-	            <dependency id="Xamarin.Android.Support.v4" version="23.3.0"/>
+	            <dependency id="Xamarin.AndroidX.ViewPager" version="1.0.0.2"/>
 	        </group>
 		</dependencies>
     </metadata>

@@ -19,16 +19,17 @@
 
 using System;
 using Android.Content;
-using Android.Support.V4.View;
+using Android.Runtime;
 using Android.Util;
 using Android.Views;
+using AndroidX.ViewPager.Widget;
 
 namespace Com.Android.DeskClock
 {
 
 	public class VerticalViewPager : ViewPager
 	{
-        private bool isSwipingEnabled = true;
+		public bool isSwipingEnabled = true;
 
 		public VerticalViewPager(Context context) : base(context, null)
 		{
@@ -37,6 +38,11 @@ namespace Com.Android.DeskClock
 		public VerticalViewPager(Context context, IAttributeSet attrs) : base(context, attrs)
 		{
 			Init();
+		}
+
+		// Fix for #171 System.MissingMethodException: No constructor found
+		public VerticalViewPager(IntPtr intPtr, JniHandleOwnership jni) : base(intPtr, jni)
+		{
 		}
 
 		/**
@@ -89,6 +95,11 @@ namespace Com.Android.DeskClock
 			return false;
 		}
 
+		public void SetPagingEnabled(bool enabled)
+		{
+			this.isSwipingEnabled = enabled;
+		}
+
 		private MotionEvent flipXY(MotionEvent ev)
 		{
 			var width = Width;
@@ -99,14 +110,9 @@ namespace Com.Android.DeskClock
 			return ev;
 		}
 
-		public void SetPagingEnabled(bool enabled)
-		{
-			this.isSwipingEnabled = enabled;
-		}
-
 		private class VerticalPageTransformer : Java.Lang.Object, ViewPager.IPageTransformer
 		{
-            public void TransformPage(View view, float position)
+			public void TransformPage(View view, float position)
 			{
 				var pageWidth = view.Width;
 				var pageHeight = view.Height;
